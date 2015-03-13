@@ -54,7 +54,7 @@ describe('express-joi-validator tests', function () {
       .expect(function (res) {
         expect(res.body.statusCode).to.equal(400);
         expect(res.body.error).to.equal('Bad Request');
-        expect(res.body.message).to.equal('id must be a number');
+        expect(res.body.message).to.match(/"id" must be a number/);
       })
       .end(done);
   });
@@ -66,7 +66,7 @@ describe('express-joi-validator tests', function () {
       .expect(function (res) {
         expect(res.body.statusCode).to.equal(400);
         expect(res.body.error).to.equal('Bad Request');
-        expect(res.body.message).to.equal('limit must be a number');
+        expect(res.body.message).to.match(/"limit" must be a number/);
       })
       .end(done);
   });
@@ -78,7 +78,7 @@ describe('express-joi-validator tests', function () {
       .expect(function (res) {
         expect(res.body.statusCode).to.equal(400);
         expect(res.body.error).to.equal('Bad Request');
-        expect(res.body.message).to.equal('name is required');
+        expect(res.body.message).to.match(/"name" is required/);
       })
       .end(done);
   });
