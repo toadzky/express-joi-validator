@@ -17,7 +17,7 @@ module.exports = function validate(schema, options) {
         toValidate[key] = req[key];
       }
     });
-    
+
     return Joi.validate(toValidate, schema, options, onValidationComplete);
 
     function onValidationComplete(err, validated) {
@@ -27,6 +27,9 @@ module.exports = function validate(schema, options) {
 
       // copy the validated data to the req object
       Extend(req, validated);
+      for (var key in validated) {
+        req[key] = validated[key];
+      }
 
       return next();
     }
